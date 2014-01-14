@@ -11,22 +11,26 @@
    </head>
    <body>
         <h1>Event # <xsl:value-of select="/event/@id" /></h1>
-        <xsl:apply-templates select="/event/doc-level" />
+        <xsl:apply-templates/>
    </body>
    </html>
 </xsl:template>
 
 <xsl:template match="doc-level">
     <div>
-    <!--     <xsl:attribute name="class">
-            <xsl:value-of select="/event/doc-level/@type" />
-        </xsl:attribute> -->
     <xsl:value-of select="." />
     </div>
 </xsl:template>
 
-
-
+<xsl:template match="table">
+    <table>
+        <thead>
+            <tr>
+                <xsl:value-of select="/event/table/table-heading"/>
+            </tr>
+        </thead>
+    </table>
+</xsl:template>
 
 
 </xsl:stylesheet>
