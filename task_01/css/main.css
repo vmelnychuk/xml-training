@@ -1,7 +1,33 @@
 body {
 	margin: 0 auto;
-	background-color: #F1F2F6;
+/* 	background-color: #F1F2F6; */
 	width: 960px;
 	font-family: Verdana, sans-serif;
-	color: #151515;
+}
+
+
+.redbox {
+	background-color: #D07070;
+}
+
+.bluebox {
+	background-color: #0893CF;
+}
+
+.comment {
+	background-color: #D8D9DD;
+}
+
+ol {
+	list-style-type: lower-roman;
+}
+
+table {
+	width: 100%;
+	
+}
+
+.table-caption {
+	background-color: #F1F2F6;
+	font-size: 1.5em;
 }
