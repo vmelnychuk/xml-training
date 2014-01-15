@@ -2,9 +2,11 @@
 <xsl:stylesheet version="2.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="html" version="5.0" encoding="utf-8" />
+
 	<xsl:template match="/">
 		<xsl:apply-templates />
 	</xsl:template>
+
 	<xsl:template match="event">
 		<html>
 			<head>
@@ -23,27 +25,18 @@
 			</body>
 		</html>
 	</xsl:template>
+
 	<xsl:template match="doc-level">
 		<xsl:choose>
-			<xsl:when test="@type = 'redbox'">
-				<div class="redbox">
-					<xsl:apply-templates />
-				</div>
-			</xsl:when>
-			<xsl:when test="@type = 'bluebox'">
-				<div class="bluebox">
-					<xsl:apply-templates />
-				</div>
-			</xsl:when>
-			<xsl:when test="@type = 'comment'">
-				<div class="comment">
+			<xsl:when test="@type != ''">
+				<div class="{@type}">
 					<xsl:apply-templates />
 				</div>
 			</xsl:when>
 			<xsl:when test="@position">
-			     <div class="{@position}">
-			         <xsl:apply-templates />
-			     </div>
+				<div class="{@position}">
+					<xsl:apply-templates />
+				</div>
 			</xsl:when>
 			<xsl:otherwise>
 				<div>
@@ -52,14 +45,11 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
+
 	<xsl:template match="para">
 		<xsl:choose>
-			<xsl:when test="@type = 'num' and following-sibling::*[1]/self::h1">
-				<p>
-					<h1>
-						<xsl:value-of select="num"/> <xsl:value-of select="following-sibling::*[1]" />
-					</h1>
-				</p>
+			<xsl:when test="@type = 'num' and following-sibling::h1">
+				<xsl:apply-templates select="h1" />
 			</xsl:when>
 			<xsl:when test="@type = 'ordered-list'">
 				<p>
@@ -75,9 +65,50 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-	<xsl:template match="image">
-	   <img src="{concat('img/',@source)}" alt="{@description}"/>
+
+	<xsl:template match="para" mode="withH1">
+		<xsl:apply-templates />
 	</xsl:template>
+
+	<xsl:template match="h1">
+		<xsl:choose>
+			<xsl:when test="preceding-sibling::para/@type = 'num'">
+				<h1>
+					<xsl:apply-templates select="../para" mode="withH1" />
+					<xsl:apply-templates />
+				</h1>
+			</xsl:when>
+			<xsl:when test="following-sibling::h2 and following-sibling::subheading">
+				<h1>
+					<xsl:apply-templates />
+				</h1>
+				<xsl:apply-templates select="../subheading" mode="withH1" />
+			</xsl:when>
+			<xsl:otherwise>
+				<h1>
+					<xsl:apply-templates />
+				</h1>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template match="h2">
+		<h2>
+			<xsl:apply-templates />
+		</h2>
+	</xsl:template>
+	
+	<xsl:template match="subheading" mode="withH1">
+		<xsl:apply-templates />
+	</xsl:template>
+	
+	<xsl:template match="subheading">
+	</xsl:template>
+
+	<xsl:template match="image">
+		<img src="{concat('img/',@source)}" alt="{@description}" />
+	</xsl:template>
+	
 	<xsl:template match="list-item">
 		<li>
 			<xsl:apply-templates />
@@ -95,6 +126,7 @@
 			<xsl:apply-templates />
 		</caption>
 	</xsl:template>
+	
 	<xsl:template match="table-row">
 		<tr>
 			<xsl:apply-templates />
