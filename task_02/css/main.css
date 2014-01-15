@@ -1,1 +1,12 @@
-@CHARSET "UTF-8";
+body {
+	color: #333333;
+	font-family: Arial, sans-serif;
+}
+
+a {
+	color: #0B61A8;
+}
+
+.bock {
+	background-color: #F8F8F8;
+}
