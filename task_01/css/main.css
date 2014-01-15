@@ -31,3 +31,11 @@ table {
 	background-color: #F1F2F6;
 	font-size: 1.5em;
 }
+
+.centered {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}

@@ -40,6 +40,11 @@
 					<xsl:apply-templates />
 				</div>
 			</xsl:when>
+			<xsl:when test="@position">
+			     <div class="{@position}">
+			         <xsl:apply-templates />
+			     </div>
+			</xsl:when>
 			<xsl:otherwise>
 				<div>
 					<xsl:apply-templates />
@@ -69,6 +74,9 @@
 				</p>
 			</xsl:otherwise>
 		</xsl:choose>
+	</xsl:template>
+	<xsl:template match="image">
+	   <img src="{concat('img/',@source)}" alt="{@description}"/>
 	</xsl:template>
 	<xsl:template match="list-item">
 		<li>
