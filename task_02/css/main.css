@@ -3,10 +3,49 @@ body {
 	font-family: Arial, sans-serif;
 }
 
-a {
-	color: #0B61A8;
+h1 {
+	font-size: 1.2em;
 }
 
-.bock {
+/* a {
+	color: #0B61A8;
+	text-decoration: none;
+	font-weight:bold;
+} */
+a.cite {
+    color: #0B61A8;
+    text-decoration: none;
+    font-weight:bold;
+}
+
+.note {
 	background-color: #F8F8F8;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 0;
+}
+.note p {
+	padding-top: 10px;
+	padding-bottom: 15px;
+	margin: 0;
+}
+
+.document {
+	
+}
+
+.level {
+	
+}
+
+.table_cell {
+	
+}
+
+table p {
+	margin: 0;
+}
+
+ul {
+	list-style-type: none;
 }

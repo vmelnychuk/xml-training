@@ -1,56 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:wkdoc="http://www.wkpublisher.com/xml-namespaces/document"
-	xmlns:wkfinder="http://www.wkpublisher.com/xml-namespaces/finder"
-	xmlns:wkgraphic="http://www.wkpublisher.com/xml-namespaces/graphic"
-	xmlns:wkrul="http://www.wkpublisher.com/xml-namespaces/ruling"
-	xmlns:wkpractice-aid="http://www.wkpublisher.com/xml-namespaces/practice-aid"
-	xmlns:wklink="http://www.wkpublisher.com/xml-namespaces/links"
-	xmlns:wkpend-leg="http://www.wkpublisher.com/xml-namespaces/pending-legislation"
-	xmlns:wkauth-rule-proc="http://www.wkpublisher.com/xml-namespaces/auth-rule-proc"
-	xmlns:wkcase-law="http://www.wkpublisher.com/xml-namespaces/case-law"
-	xmlns:wkcom-rep="http://www.wkpublisher.com/xml-namespaces/committee-report"
-	xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:wkagency-pub="http://www.wkpublisher.com/xml-namespaces/agency-pub"
-	xmlns:wkchange-track="http://www.wkpublisher.com/xml-namespaces/change-tracking"
-	xmlns:wkmedia="http://www.wkpublisher.com/xml-namespaces/media"
-	xmlns:wkattachment="http://www.wkpublisher.com/xml-namespaces/attachment"
-	xmlns:wkform="http://www.wkpublisher.com/xml-namespaces/form"
-	xmlns:wknews="http://www.wkpublisher.com/xml-namespaces/news"
-	xmlns:wkreg="http://www.wkpublisher.com/xml-namespaces/reg"
-	xmlns:wklaw="http://www.wkpublisher.com/xml-namespaces/law"
-	xmlns:wkext-meta="http://www.wkpublisher.com/xml-namespaces/extensible-metadata"
-	xmlns:wkinternational="http://www.wkpublisher.com/xml-namespaces/international"
-	xmlns:wktable="http://www.wkpublisher.com/xml-namespaces/table"
-	xmlns:wkperiodical="http://www.wkpublisher.com/xml-namespaces/periodical">
-	<xsl:output method="html" version="5.0" encoding="utf-8" />
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:wkdoc="http://www.wkpublisher.com/xml-namespaces/document"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	>
+	
+	<xsl:output method="html" version="5.0" indent="yes" encoding="utf-8" />
 
 	<xsl:template match="/">
-		<xsl:apply-templates />
-	</xsl:template>
-
-	<xsl:template match="atlas-document">
 		<html>
-			<head>
-				<title>
-					<xsl:text>Task 2</xsl:text>
-				</title>
-				<link rel="stylesheet" href="css/main.css" />
-			</head>
-			<body>
-			     <xsl:apply-templates />
-			</body>
-		</html>
-		<xsl:text>MY TEST</xsl:text>
-	</xsl:template>
+            <head>
+                <title>
+                    <xsl:value-of select="/atlas-document/@id" />
+                </title>
+                <link rel="stylesheet" href="css/main.css" />
+            </head>
+            <body>
+                 <xsl:apply-templates />
+            </body>
+        </html>
 
-	<xsl:template match="document">
-		<xsl:text>MY TEST</xsl:text>
-		<xsl:apply-templates />
+	</xsl:template>
+	<xsl:template match="wkdoc:document">
+	<div class="document"> <xsl:comment> begin of document </xsl:comment>
+	    <xsl:apply-templates />
+	</div> <xsl:comment> end of document </xsl:comment>
 	</xsl:template>
 	<xsl:template match="heading">
-		<h1>
-			<xsl:apply-templates />
-		</h1>
-		<xsl:apply-templates />
+	   <h1>
+	       <xsl:apply-templates />
+	   </h1>
 	</xsl:template>
+	<xsl:template match="wkdoc:level">
+	   <div class="level"> <xsl:comment> begin of level </xsl:comment>
+	        <xsl:apply-templates />
+	   </div>  <xsl:comment> end of level </xsl:comment>
+	</xsl:template>
+	<xsl:template match="para">
+	<p>
+	<xsl:if test="@align != ''">
+	<xsl:attribute name="align"> <xsl:value-of select="@align" /> </xsl:attribute>
+	</xsl:if>
+	   <xsl:apply-templates />
+	</p>
+	</xsl:template>
+	<xsl:template match="anchor">
+	<a>
+	<xsl:attribute name="href">  <xsl:value-of select="@id" /> </xsl:attribute>
+	 <xsl:apply-templates />
+	</a>
+	</xsl:template>
+	
+	<xsl:template match="cite-ref">
+	<a class="cite">
+	<xsl:attribute name="href"> <xsl:value-of select="concat('#', @id)" /> </xsl:attribute>
+	   <xsl:apply-templates />
+	</a>
+	</xsl:template>
+	
+	<xsl:template match="italic">
+	   <i>
+	   <xsl:apply-templates />
+	   </i>
+	</xsl:template>
+	<xsl:template match="bold">
+       <b>
+       <xsl:apply-templates />
+       </b>
+    </xsl:template>
+    <xsl:template match="xhtml:table">
+    <xsl:comment> begin of table </xsl:comment>
+        <table>
+        <xsl:if test="@cellspacing">
+            <xsl:attribute name="cellspacing"><xsl:value-of select="@cellspacing"/></xsl:attribute>
+        </xsl:if>
+        <xsl:if test="@cellpadding">
+            <xsl:attribute name="cellpadding"><xsl:value-of select="@cellpadding"/></xsl:attribute>
+        </xsl:if>
+        <xsl:if test="@width">
+            <xsl:attribute name="width"><xsl:value-of select="@width"/></xsl:attribute>
+        </xsl:if>
+        <xsl:if test="@border">
+            <xsl:attribute name="border"><xsl:value-of select="@border"/></xsl:attribute>
+        </xsl:if>
+         <xsl:apply-templates />
+        </table>
+    <xsl:comment> end of table </xsl:comment>
+    </xsl:template>
+    <xsl:template match="xhtml:tr">
+        <tr>
+            <xsl:apply-templates />
+        </tr>
+    </xsl:template>
+    <xsl:template match="xhtml:td">
+        <td>
+            <xsl:apply-templates />
+        </td>
+    </xsl:template>
+    <xsl:template match="note">
+    <div class="note">
+        <xsl:apply-templates />
+    </div>
+    </xsl:template>
+    <xsl:template match="h1">
+        <h1>
+            <xsl:apply-templates />
+        </h1>
+    </xsl:template>
+    <xsl:template match="unordered-list">
+    <ul>
+    <xsl:apply-templates />
+    </ul>
+    </xsl:template>
+    <xsl:template match="list-item">
+    <li>
+     <xsl:apply-templates />
+    </li>
+    </xsl:template>
+    <xsl:template match="footnote">
+    <a>
+    <xsl:attribute name="href"> <xsl:value-of select="concat('#', @id)" /> </xsl:attribute>
+    <sup><xsl:value-of select="@num" /></sup>
+    </a>
+    </xsl:template>
 </xsl:stylesheet>
