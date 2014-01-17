@@ -12,13 +12,13 @@
     </xs:element>
     
     <xs:element name="anchor" type="xs:string">
-        <xs:attribute name="id" type="string" />
+        <xs:attribute name="id" type="string" use="required" />
     </xs:element>
     
     <xs:element name="cite-ref">
     <xs:attribute name="handle" type="xs:string" />
-    <xs:attribute name="id" type="xs:string" />
-    <xs:attribute name="search-value" type="xs:string" />
+    <xs:attribute name="id" type="xs:string" use="required" />
+    <xs:attribute name="search-value" type="xs:string" use="required" />
     </xs:element>
     
     <xs:element name="para">
