@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://www.example.org/task2" 
+    xmlns:tns="http://www.example.org/task2"
+    elementFormDefault="qualified">
+    <xs:element name="italic" type="xs:string" />
+    <xs:element name="bold" type="xs:string" />
+    
+    
+    <xs:element name="heading" type="xs:string">
+      <xs:attribute name="flow-type" type="xs:string"/>
+    </xs:element>
+    
+    <xs:element name="anchor" type="xs:string">
+        <xs:attribute name="id" type="string" />
+    </xs:element>
+    
+    <xs:element name="cite-ref">
+    <xs:attribute name="handle" type="xs:string" />
+    <xs:attribute name="id" type="xs:string" />
+    <xs:attribute name="search-value" type="xs:string" />
+    </xs:element>
+    
+    <xs:element name="para">
+    <xs:attribute name="align" type="xs:string" />
+    </xs:element>
+
+     <xs:element name="wkdoc:level">
+        <xs:complesType>
+        <xs:attribute name="id" type="string" />
+        <xs:attribute name="level-type" type="xs:string" />
+        </xs:complesType>
+     </xs:element>    
+    
+    <xs:element name="xhtml:col">
+    <xs:attribute name="span" type="xs:integer" />
+    </xs:element>
+    
+    <xs:element name="xhtml:colgroup">
+    </xs:element>
+    
+    
+    <xs:element name="unordered-list">
+    <xs:attribute name="token" type="xs:string" />
+    </xs:element>
+    
+    <xs:element name="footnote">
+    <xs:attribute name="id" type ="xs:string" />
+    <xs:attribute name="num" type="xs:integer" />
+    </xs:element>
+    
+    <xs:element name="list-item">
+    </xs:element>
+    
+    <xs:element name="atlas-document">
+        <xs:complexType>
+
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>
