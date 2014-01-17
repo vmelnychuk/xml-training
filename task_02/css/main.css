@@ -7,11 +7,7 @@ h1 {
 	font-size: 1.2em;
 }
 
-/* a {
-	color: #0B61A8;
-	text-decoration: none;
-	font-weight:bold;
-} */
+
 a.cite {
     color: #0B61A8;
     text-decoration: none;
@@ -38,9 +34,6 @@ a.cite {
 	
 }
 
-.table_cell {
-	
-}
 
 table p {
 	margin: 0;
@@ -48,4 +41,33 @@ table p {
 
 ul {
 	list-style-type: none;
+}
+
+a.tooltip {
+	outline:none;
+}
+a.tooltip:hover {
+	text-decoration:none;
+} 
+a.tooltip span {
+    z-index:10;
+    display:none;
+    padding:5px 5px;
+    margin-top:-60px;
+    margin-left:10px;
+    width:240px;
+    line-height:16px;
+}
+
+a.tooltip span p {
+	margin: 0;
+	font-size: 0.7em;
+}
+
+a.tooltip:hover span {
+    display:inline;
+    position:absolute;
+    color: #000000;
+    border:1px solid #000000;
+    background-color: #F8F8F8;
 }
