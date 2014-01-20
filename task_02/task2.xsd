@@ -1,79 +1,211 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="http://www.example.org/task2" xmlns:tns="http://www.example.org/task2"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:wkdoc="http://www.wkpublisher.com/xml-namespaces/document"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	elementFormDefault="qualified">
-
+	<xs:import namespace="http://www.wkpublisher.com/xml-namespaces/document"
+		schemaLocation="task2.xsd" />
+	
 	<!-- types of elements -->
 	<xs:simpleType name="idType">
 		<xs:restriction base="xs:string">
-			<xs:pattern value="io*" />
+			<xs:pattern value="io.*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="flowType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="paragraph" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="alignType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="left" />
+			<xs:enumeration value="right" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="percentType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value=".*%" />
 		</xs:restriction>
 	</xs:simpleType>
 
 	<!-- from the deepest -->
 	<xs:element name="bold" type="xs:string" />
+
 	<xs:element name="italic">
 		<xs:complexType mixed="true">
 			<xs:sequence>
-				<xs:element ref="bold" minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="bold" minOccurs="0" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="heading" type="xs:string">
+	<xs:element name="anchor">
 		<xs:complexType>
-			<xs:attribute name="flow-type" type="xs:string" />
+			<xs:attribute name="id" type="idType" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="heading">
+		<xs:complexType mixed="true">
+			<xs:attribute name="flow-type" type="flowType" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="h1">
+		<xs:complexType mixed="true">
+			<xs:sequence>
+				<xs:element ref="bold" />
+			</xs:sequence>
+			<xs:attribute name="flow-type" type="flowType" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="cite-ref">
+		<xs:complexType mixed="true">
+			<xs:attribute name="handle" type="xs:string" use="required" />
+			<xs:attribute name="id" type="idType" use="required" />
+			<xs:attribute name="search-value" type="idType" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="footnote">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="para" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="id" type="idType" use="required" />
+			<xs:attribute name="num" type="xs:integer" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="para">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="bold" />
+				<xs:element ref="anchor" />
+				<xs:element ref="cite-ref" />
+				<xs:element ref="footnote" />
+				<xs:element ref="italic" />
+			</xs:choice>
+			<xs:attribute name="align" type="alignType" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="note">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="para" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="type" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="list-item">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="para" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="unordered-list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="list-item" />
+			</xs:sequence>
+			<xs:attribute name="token" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="xhtml:td">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="para" />
+				<xs:element ref="note" />
+			</xs:choice>
+			<xs:attribute name="align" type="alignType" />
+			<xs:attribute name="class" type="xs:string" />
+			<xs:attribute name="style" type="xs:string" />
+			<xs:attribute name="valign" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="xhtml:tr">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="xhtml:td" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="xhtml:col">
+		<xs:complexType>
+			<xs:attribute name="span" type="xs:integer" use="required" />
+			<xs:attribute name="width" type="percentType" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="xhtml:colgroup">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="xhtml:col" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="xhtml:table">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="xhtml:colgroup" />
+				<xs:element maxOccurs="unbounded" ref="xhtml:tr" />
+			</xs:sequence>
+			<xs:attribute name="border" type="xs:integer" />
+			<xs:attribute name="cellpadding" type="xs:integer" use="required" />
+			<xs:attribute name="cellspacing" type="xs:integer" use="required" />
+			<xs:attribute name="width" />
 		</xs:complexType>
 	</xs:element>
 
 
-
-
-	<xs:element name="anchor" type="xs:string">
-		<xs:attribute name="id" type="string" use="required" />
-	</xs:element>
-
-	<xs:element name="cite-ref">
-		<xs:attribute name="handle" type="xs:string" />
-		<xs:attribute name="id" type="xs:string" use="required" />
-		<xs:attribute name="search-value" type="xs:string" use="required" />
-	</xs:element>
-
-	<xs:element name="para">
-		<xs:attribute name="align" type="xs:string" />
-	</xs:element>
-
 	<xs:element name="wkdoc:level">
-		<xs:complesType>
-			<xs:attribute name="id" type="string" />
-			<xs:attribute name="level-type" type="xs:string" />
-		</xs:complesType>
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="para" />
+				<xs:element ref="h1" />
+				<xs:element ref="unordered-list" />
+				<xs:element ref="xhtml:table" />
+			</xs:choice>
+			<xs:attribute name="id" type="idType" use="required" />
+			<xs:attribute name="level-type" type="xs:string" use="required" />
+		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="xhtml:col">
-		<xs:attribute name="span" type="xs:integer" />
-	</xs:element>
-
-	<xs:element name="xhtml:colgroup">
-	</xs:element>
-
-
-	<xs:element name="unordered-list">
-		<xs:attribute name="token" type="xs:string" />
-	</xs:element>
-
-	<xs:element name="footnote">
-		<xs:attribute name="id" type="xs:string" />
-		<xs:attribute name="num" type="xs:integer" />
-	</xs:element>
-
-	<xs:element name="list-item">
+	<xs:element name="document">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="heading" />
+				<xs:element ref="wkdoc:level" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="id" use="required" type="idType" />
+			<xs:attribute name="required-dtd-version" use="required"
+				type="xs:string" />
+			<xs:attribute name="searchable" use="required" type="xs:string" />
+		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="atlas-document">
 		<xs:complexType>
-
+			<xs:sequence>
+				<xs:element ref="wkdoc:document" />
+			</xs:sequence>
+			<xs:attribute name="id" type="idType" use="required" />
+			<xs:attribute name="required-dtd-version" type="xs:string"
+				use="required" />
 		</xs:complexType>
 	</xs:element>
-
 </xs:schema>

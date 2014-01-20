@@ -3,7 +3,7 @@
 <atlas-document id="io2147419sl396955277"
     required-dtd-version="04.24.00"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNameSpaceSchemaLocation="task2.xsd">
+    xsi:noNamespaceSchemaLocation="task2.xsd">
 	<wkdoc:document xmlns:wkdoc="http://www.wkpublisher.com/xml-namespaces/document"
 		xmlns:wkfinder="http://www.wkpublisher.com/xml-namespaces/finder"
 		xmlns:wkgraphic="http://www.wkpublisher.com/xml-namespaces/graphic"
