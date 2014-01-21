@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:wkdoc="http://www.wkpublisher.com/xml-namespaces/document"
-	xmlns:xhtml="http://www.w3.org/1999/xhtml"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	elementFormDefault="qualified">
 
@@ -121,7 +119,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="xhtml:td">
+	<xs:element name="td">
 		<xs:complexType>
 			<xs:choice>
 				<xs:element ref="para" />
@@ -134,34 +132,34 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="xhtml:tr">
+	<xs:element name="tr">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="xhtml:td" maxOccurs="unbounded" />
+				<xs:element ref="td" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="xhtml:col">
+	<xs:element name="col">
 		<xs:complexType>
 			<xs:attribute name="span" type="xs:integer" use="required" />
 			<xs:attribute name="width" type="percentType" />
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="xhtml:colgroup">
+	<xs:element name="colgroup">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="xhtml:col" maxOccurs="unbounded" />
+				<xs:element ref="col" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="xhtml:table">
+	<xs:element name="table">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="xhtml:colgroup" />
-				<xs:element maxOccurs="unbounded" ref="xhtml:tr" />
+				<xs:element ref="colgroup" />
+				<xs:element maxOccurs="unbounded" ref="tr" />
 			</xs:sequence>
 			<xs:attribute name="border" type="xs:integer" />
 			<xs:attribute name="cellpadding" type="xs:integer" use="required" />
@@ -171,24 +169,24 @@
 	</xs:element>
 
 
-	<xs:element name="wkdoc:level">
+	<xs:element name="level">
 		<xs:complexType>
 			<xs:choice maxOccurs="unbounded">
 				<xs:element ref="para" />
 				<xs:element ref="h1" />
 				<xs:element ref="unordered-list" />
-				<xs:element ref="xhtml:table" />
+				<xs:element ref="table" />
 			</xs:choice>
 			<xs:attribute name="id" type="idType" use="required" />
 			<xs:attribute name="level-type" type="xs:string" use="required" />
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="wkdoc:document">
+	<xs:element name="document">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="heading" />
-				<xs:element ref="wkdoc:level" maxOccurs="unbounded" />
+				<xs:element ref="level" maxOccurs="unbounded" />
 			</xs:sequence>
 			<xs:attribute name="id" use="required" type="idType" />
 			<xs:attribute name="required-dtd-version" use="required"
@@ -200,7 +198,7 @@
 	<xs:element name="atlas-document">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="wkdoc:document" />
+				<xs:element ref="document" />
 			</xs:sequence>
 			<xs:attribute name="id" type="idType" use="required" />
 			<xs:attribute name="required-dtd-version" type="xs:string"
