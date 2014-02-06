@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="task3.xsl"?>
+<slides>
+	<slide number="1">
+		<title>fist</title>
+		<content>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+			quis risus
+			sed lorem tincidunt venenatis. Morbi lacinia facilisis
+			nisi id dictum.
+			Suspendisse eget mi at ante condimentum hendrerit sed
+			sit amet augue.
+			Nunc facilisis sapien sed lectus sodales, sed dapibus
+			nulla congue.
+			Morbi fringilla eu libero quis vestibulum. Interdum et
+			malesuada fames
+			ac ante ipsum primis in faucibus. Vestibulum ut
+			viverra est. Fusce
+			dignissim id mi sit amet congue. Nam at tincidunt
+			est, ac consequat
+			dui. Suspendisse id sagittis augue. Ut vehicula
+			tellus et lectus
+			tempus, non blandit nulla porttitor. Sed viverra
+			odio velit, in
+			bibendum quam dictum id.
+		</content>
+	</slide>
+	<slide number="2">
+		<title>second</title>
+		<content>
+			Pellentesque ut adipiscing quam. Duis lacinia tempus sapien,
+			non laoreet enim
+			pellentesque ac. In nec massa consequat, dapibus
+			enim a, auctor erat.
+			Proin adipiscing tincidunt massa at porttitor.
+			Donec non mattis nunc.
+			Maecenas et nunc a erat feugiat congue. Class
+			aptent taciti sociosqu
+			ad litora torquent per conubia nostra, per
+			inceptos himenaeos.
+		</content>
+	</slide>
+	<slide number="3">
+		<title>third</title>
+		<content>
+			Nullam in tortor id magna pharetra congue a vel arcu. Nunc
+			volutpat, urna
+			non molestie fringilla, orci quam aliquam ipsum, quis
+			vestibulum nisl
+			magna vitae nisl. Sed consequat vitae purus tristique
+			hendrerit. Fusce
+			nec porttitor turpis. Maecenas volutpat magna ac
+			condimentum
+			tincidunt. Phasellus condimentum ipsum lectus, non cursus
+			purus
+			elementum eu. Sed tristique urna nec tempor dignissim.
+		</content>
+	</slide>
+	<slide number="4">
+		<title>forth</title>
+		<content>
+			Donec at tempus elit, vitae tincidunt orci. Sed et magna sit
+			amet metus
+			sodales pellentesque. Lorem ipsum dolor sit amet,
+			consectetur
+			adipiscing elit. Aenean et ultrices massa, sit amet
+			sagittis odio. Sed
+			accumsan lectus sed vestibulum consequat. Proin
+			nulla ipsum, dapibus
+			in condimentum in, euismod ac arcu. Proin dictum
+			massa vitae ligula
+			laoreet, in pulvinar lectus convallis. Nunc nisi
+			nibh, scelerisque et
+			commodo semper, malesuada id turpis. Phasellus
+			vel tempor neque. Sed
+			magna nulla, gravida quis tempor eu, blandit
+			non nisl.
+		</content>
+	</slide>
+	<slide number="5">
+		<title>fifth</title>
+		<content>
+			Aliquam porttitor velit sed libero molestie, a lobortis massa
+			ultricies. Duis
+			consequat enim id accumsan pharetra. Fusce mattis
+			lectus id risus
+			mollis, at interdum augue faucibus. Phasellus
+			vestibulum interdum
+			porttitor. Proin non blandit elit, vitae volutpat
+			tortor. Sed blandit
+			eget quam eget interdum. Nunc commodo est sed
+			arcu
+			accumsan elementum.
+		</content>
+	</slide>
+	<slide number="6">
+		<title>sixth</title>
+		<content>
+			Vivamus eu venenatis felis. Proin fringilla lectus quis
+			egestas iaculis.
+			Curabitur pellentesque diam ac lacus facilisis
+			elementum. In fringilla
+			rutrum nisi et viverra. Phasellus tincidunt
+			pellentesque tellus nec
+			elementum. Aliquam id sapien dictum, auctor
+			mi et, vestibulum lorem.
+			Integer justo erat, tristique et cursus a,
+			bibendum a sem. Aenean in
+			felis et ligula cursus sagittis in dictum
+			sapien. Quisque nec congue
+			magna, vitae dapibus arcu.
+		</content>
+	</slide>
+</slides>

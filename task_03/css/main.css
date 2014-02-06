@@ -1,0 +1,27 @@
+html {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+}
+
+.slide {
+	margin-bottom: 10px;
+	background-color: #CCCCCC;
+}
+
+.slide-number {
+	color: #821122;
+	text-align: right;
+	padding-right: 5px;
+}
+
+.slide-title {
+	text-transform: capitalize;
+	padding-left: 40px;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.slide-content {
+	padding-left: 10px;
+	padding-right: 10px;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}
