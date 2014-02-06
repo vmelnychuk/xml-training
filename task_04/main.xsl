@@ -36,22 +36,35 @@
 	</xsl:template>
 	<xsl:template match="footnote">
 		<a>
+		    <xsl:attribute name="id"><xsl:value-of select="concat(@id, 'up')" /></xsl:attribute>
 			<xsl:attribute name="href"><xsl:value-of select="concat('#', @id)" /></xsl:attribute>
-			[
-			<xsl:value-of select="@num" />
-			]
+			[<xsl:value-of select="@num" />]
 		</a>
 	</xsl:template>
 	<xsl:template match="footnote" mode="display">
+		<div class="footnote-container">
 			<div>
-				<xsl:attribute name="class"><xsl:text>footnote-number</xsl:text></xsl:attribute>
+			<a>
+			<xsl:attribute name="href"><xsl:value-of select="concat('#', @id, 'up')" /></xsl:attribute>
+		<xsl:attribute name="id">
+		<xsl:value-of select="@id" />
+		</xsl:attribute>
+				<xsl:attribute name="class">
+				<xsl:text>footnote-number</xsl:text>
+			</xsl:attribute>
 				<xsl:value-of select="@num" />
+				</a>
 			</div>
-			<xsl:apply-templates />
+			<div class="footnote-content">
+				<xsl:apply-templates />
+			</div>
+		</div>
 	</xsl:template>
 	<xsl:template match="italic">
 		<span>
-			<xsl:attribute name="class"><xsl:text>italic</xsl:text></xsl:attribute>
+			<xsl:attribute name="class">
+			     <xsl:text>italic</xsl:text>
+			</xsl:attribute>
 			<xsl:apply-templates />
 		</span>
 	</xsl:template>
@@ -62,19 +75,5 @@
 		</h2>
 		<xsl:apply-templates select="//footnote" mode="display" />
 	</xsl:template>
-
-	<!-- <xsl:template match="wkdoc:document"> <xsl:apply-templates /> <xsl:call-template 
-		name="footnote-imp" /> </xsl:template> <xsl:template match="heading"> <h1> 
-		<xsl:attribute name="id"><xsl:text>Main_title</xsl:text></xsl:attribute> 
-		<xsl:value-of select="."></xsl:value-of> </h1> </xsl:template> <xsl:template 
-		match="wkdoc:level"> <div> <xsl:for-each select="@*"> <xsl:value-of select="name()" 
-		/> <xsl:value-of select="." /> </xsl:for-each> <xsl:apply-templates /> </div> 
-		</xsl:template> <xsl:template match="para"> <p> <xsl:for-each select="@*"> 
-		<xsl:value-of select="name()" /> <xsl:value-of select="." /> </xsl:for-each> 
-		<xsl:apply-templates /> </p> </xsl:template> <xsl:template match="footnote"> 
-		<a> <xsl:attribute name="href"><xsl:value-of select="concat('#', @id)" /></xsl:attribute> 
-		[ <xsl:value-of select="@num" /> ] </a> </xsl:template> <xsl:template name="footnote-imp"> 
-		<span> <a> <xsl:attribute name="href"><xsl:value-of select="concat('#', @id)" 
-		/></xsl:attribute> </a> </span> <xsl:apply-templates /> </xsl:template> -->
 </xsl:stylesheet>
 
