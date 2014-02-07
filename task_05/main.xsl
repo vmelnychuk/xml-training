@@ -34,10 +34,10 @@
 		</p>
 	</xsl:template>
 	<xsl:template match="footnote">
-        <a>
+        <a class="tooltip">
             <xsl:attribute name="href"><xsl:text>#</xsl:text></xsl:attribute>
                 [<xsl:value-of select="@num" />]
-                <span class="tooltip">
+                <span class="note">
                     <xsl:apply-templates />
                 </span>
         </a>
