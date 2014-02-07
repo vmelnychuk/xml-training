@@ -1,0 +1,59 @@
+html {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	color: #005688;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.footnotes-header {
+	background-color: #EEF7E5;
+	border-top: 1px solid #9B9B9B;
+    border-bottom: 1px solid #9B9B9B;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5em;
+    padding: 5px 10px 5px 10px;
+}
+
+a {
+	color: inherit;
+	text-decoration:none;
+	font-weight: bold;
+	font-size: 0.9em;
+}
+
+.footnote-container {
+	margin-bottom: 10px;
+}
+
+.footnote-number {
+	color: #008000;
+	font-weight: bold;
+	font-style: italic;
+	float: left;
+	width: 2%;
+	font-size: 0.8em;
+	text-align: right;
+}
+
+
+.footnote-content {
+	margin-left: 2%;
+	padding-left: 10px;
+	
+}
+
+.footnote-content p {
+	margin: 0;
+}
+
+.content {
+	border-top: 1px solid #DFDFDF;
+    border-bottom: 1px solid #DFDFDF;
+}
+
+.italic {
+	font-style: italic;
+}
+

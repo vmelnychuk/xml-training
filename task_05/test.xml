@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type="text/xsl" href="main.xsl"?>
+<!DOCTYPE atlas-document PUBLIC "-//WoltersKluwer//DTD ATLAS-Interchange: Document XML//EN" "Atlas_Interchange_Document.dtd">
+<atlas-document id="io1612967sl235055112"
+	xmlns:wkdoc="http://example.com/wkdoc"
+	required-dtd-version="04.24.00">
+	<wkdoc:document id="io1612967sl235055112"
+		required-dtd-version="04.17.01" searchable="yes">
+		<heading>Content Formatter Test Document</heading>
+		<wkdoc:level id="io1594691sl231640034" level-type="flush">
+			<para align="left">
+				1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				Suspendisse vel tortor justo. Nullam vel velit metus. Morbi sit amet
+				fermentum lacus. Mauris quis adipiscing magna. Pellentesque et
+				mollis ligula. Duis luctus tempus velit id consectetur. Vestibulum
+				placerat rutrum tortor nec pharetra. Donec non ullamcorper ante.
+				<footnote id="io1612967sl235055112f1" num="1">
+					<para>
+						Fusce sit amet pulvinar purus.
+						<italic>Nunc in eros id turpis pulvinar convallis.</italic>
+						Morbi mattis gravida diam eu feugiat.
+					</para>
+				</footnote>
+				Curabitur ornare ullamcorper purus, vitae mattis odio egestas nec.
+				Suspendisse varius nulla gravida nunc volutpat molestie. Donec
+				tincidunt urna quam, ac mollis ipsum ornare non. Donec aliquet
+				pellentesque nunc vitae tincidunt. In lacinia, nibh ac ornare
+				tempor, lectus dui euismod libero, a convallis libero tellus sed
+				nisl. Etiam libero felis, molestie sed eros eget, venenatis posuere
+				neque. Suspendisse porta convallis urna sit amet feugiat. Mauris id
+				gravida tellus.
+			</para>
+			<para align="left">
+				2. Etiam malesuada, tortor at blandit posuere, sapien enim viverra
+				orci, varius pretium elit urna at mi. Curabitur ullamcorper tempus
+				turpis eu sodales. Sed eros augue, suscipit a diam eu, dignissim
+				porta magna. Nullam semper tincidunt neque, non convallis augue.
+				<footnote id="io1612967sl235055112f2" num="2">
+					<para>Morbi mattis gravida diam eu feugiat. Nunc fringilla, tortor
+						in rutrum volutpat, magna nibh lobortis leo, a mattis ipsum velit
+						venenatis velit. Curabitur id velit imperdiet, vehicula leo ac,
+						interdum elit. Aenean dolor arcu, iaculis vitae rhoncus vitae,
+						volutpat sed enim.</para>
+				</footnote>
+				Nulla nisl turpis, sagittis in commodo nec, vulputate in purus.
+				Pellentesque ut libero sit amet neque volutpat mattis. Maecenas quis
+				convallis orci. Mauris scelerisque tempor elit ac consequat.
+				Phasellus tincidunt, diam ut porta bibendum, justo mauris imperdiet
+				nunc, ac sagittis velit lorem eget velit. Sed vel hendrerit risus.
+				Vivamus quis orci tincidunt, euismod lorem dignissim, adipiscing
+				purus.
+			</para>
+		</wkdoc:level>
+	</wkdoc:document>
+</atlas-document>
+
